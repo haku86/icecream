@@ -10,6 +10,7 @@
 
     <!-- Le styles -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -39,24 +40,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">icecream</a>
+          <a class="navbar-brand nixie" href="#">IceMaker Labs</a>
         </div>
         <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <ul class="nav navbar-nav pull-right">
+            <li><a class="btn btn-warning add-flavour-btn" href="#about">Add Flavours</a></li>
+            <li><a href="#contact">Login</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
     <div class="container">
-
-      <h1>{% block page_title %}Example Base Template{% endblock page_title %}</h1>
-
       {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
+        
       {% endblock content %}
 
     </div> <!-- /container -->
