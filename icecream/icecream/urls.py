@@ -10,9 +10,13 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='index.html')),
 
+
     # Examples:
     # url(r'^$', 'icecream.views.home', name='home'),
     # url(r'^icecream/', include('icecream.foo.urls')),
+
+    # User accounts
+    (r'^accounts/', include('registration.backends.simple.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
