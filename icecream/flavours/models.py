@@ -21,7 +21,7 @@ class Flavour(TimeStampedModel):
     scoops_remaining = models.IntegerField()
 
     def get_absolute_url(self):
-          return reverse("flavor_detail", kwargs={"slug": self.slug})
+          return reverse("flavours:detail", kwargs={"slug": self.slug})
 
     def save(self, *args, **kwargs):
         if not self.id:

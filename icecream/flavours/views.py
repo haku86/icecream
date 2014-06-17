@@ -39,4 +39,3 @@ class FlavourUpdateView(LoginRequiredMixin, FlavourActionMixin, UpdateView):
 class FlavourDetailView(DetailView):
     model = Flavour
 
-    

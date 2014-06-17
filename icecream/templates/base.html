@@ -49,7 +49,11 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li><a class="btn btn-warning btn-navbar" id="add-flavour-btn" href="{% url 'flavours:create' %}">Add Flavour</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'django.contrib.auth.views.logout' %}">Logout</a></li>
+            {% else %}
             <li><a href="{% url 'django.contrib.auth.views.login' %}">Login</a></li>
+            {% endif %}
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

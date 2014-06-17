@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h3>Icemaker: <span class="uppercase">{{ user.username }}</h3>
+    </div>
+</div>
+<div class="row">
+    {% for flavour in object_list %}
+    <div class="col-md-4 icecream-list">
+        <div class="icecream-tub" style="background-color: {{ flavour.color }}"></div>
+        <p class="nixie">{{ flavour.name }}</p>
+        <p class="nixie">{{ flavour.created }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
