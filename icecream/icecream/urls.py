@@ -3,17 +3,19 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.views.generic import TemplateView
 
+from flavours.views import FlavourList
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', TemplateView.as_view(template_name='index.html')),
-
+    url(r'^$', FlavourList.as_view(template_name='index.html')),
 
     # Examples:
     # url(r'^$', 'icecream.views.home', name='home'),
     # url(r'^icecream/', include('icecream.foo.urls')),
+    url(r'^flavours/', include('flavours.urls', namespace="flavours")),
 
     # User accounts
     (r'^accounts/', include('registration.backends.simple.urls')),

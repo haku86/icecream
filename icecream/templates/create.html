@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h3>Icemaker: <span class="uppercase">{{ user.username }}</h3>
+    </div>
+</div>
+<div class="row">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+{% endblock %}

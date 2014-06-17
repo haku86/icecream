@@ -48,12 +48,26 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a class="btn btn-warning btn-navbar" id="add-flavour-btn" href="#">Add Flavour</a></li>
-            <li><a  href="#">Login</a></li>
+            <li><a class="btn btn-warning btn-navbar" id="add-flavour-btn" href="{% url 'flavours:create' %}">Add Flavour</a></li>
+            <li><a href="{% url 'django.contrib.auth.views.login' %}">Login</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+
+    <div class="container">
+      {% if messages %}
+    ￼￼<ul class="messages">
+        {% for message in messages %}
+        <li id="message_{{ forloop.counter }}"
+          {% if message.tags %} class="{{ message.tags }}"
+                  {% endif %}>
+                  {{ message }}
+        </li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
 
     <div class="container">
       {% block content %}

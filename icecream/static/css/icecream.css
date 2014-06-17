@@ -3,6 +3,10 @@
     font-family: 'Nixie One', cursive;
 }
 
+.uppercase{
+    text-transform: uppercase;
+}
+
 /* Header */
 .navbar{
     background-color: #77f0e6;
@@ -34,4 +38,16 @@
     background-color: #ED9C28 !important;
     border-color: #D58512 !important;
     color: #ffffff !important;    
+}
+
+/* Display Flavour List */
+.icecream-list{
+    height: 300px;
+}
+
+.icecream-tub{
+    height: 50%;
+    width: 50%;
+    border-radius: 50%;
+
 }
