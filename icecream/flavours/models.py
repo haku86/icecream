@@ -18,7 +18,7 @@ class Flavour(TimeStampedModel):
     name = models.CharField(max_length=200)
     color = models.CharField(max_length=200)
     slug = models.SlugField()
-    scoops_remaining = models.IntegerField()
+    scoops_remaining = models.IntegerField(null=True, blank=True)
 
     def get_absolute_url(self):
           return reverse("flavours:detail", kwargs={"slug": self.slug})

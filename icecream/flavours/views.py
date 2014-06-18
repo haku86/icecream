@@ -1,12 +1,14 @@
 from django.contrib import messages
-from django.shortcuts import render
+from django.forms.formsets import formset_factory, BaseFormSet
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
 
 
 from braces.views import LoginRequiredMixin
 
 from .models import Flavour
-from .forms import FlavourCreateForm
+from .forms import FlavourCreateForm, ScoopsUpdateForm
 
 # Create your views here.
 class FlavourActionMixin(object):
@@ -24,8 +26,22 @@ class FlavourActionMixin(object):
         messages.info(self.request, msg)
         return super(FlavourActionMixin, self).form_valid(form)
 
-class FlavourList(ListView):
-    model = Flavour
+def flavour_list_view(request):
+    flavours = Flavour.objects.all()
+
+    if request.method == "POST":
+        flavour_id = int(request.POST.get('flavour_id'))
+        flavour = get_object_or_404(Flavour, pk=flavour_id)
+        if 'one' in request.POST:
+            flavour.scoops_remaining -= 1
+            flavour.save()
+        elif 'two' in request.POST:
+            flavour.scoops_remaining -= 2
+            flavour.save()
+        return HttpResponseRedirect('/')  
+    else:
+        scoops_update_form = ScoopsUpdateForm()
+    return render(request, 'index.html',{'flavours' : flavours, 'scoops_update_form' : scoops_update_form})
 
 class FlavourCreateView(LoginRequiredMixin, FlavourActionMixin, CreateView):
     model = Flavour
@@ -38,4 +54,3 @@ class FlavourUpdateView(LoginRequiredMixin, FlavourActionMixin, UpdateView):
 
 class FlavourDetailView(DetailView):
     model = Flavour
-

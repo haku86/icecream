@@ -3,14 +3,14 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.views.generic import TemplateView
 
-from flavours.views import FlavourList
+from flavours.views import flavour_list_view
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', FlavourList.as_view(template_name='index.html')),
+    url(r'^$', 'flavours.views.flavour_list_view', name="index"),
 
     # Examples:
     # url(r'^$', 'icecream.views.home', name='home'),
