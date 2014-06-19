@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="row">
-    {% for flavour in flavours %}
+    {% for flavour in object_list %}
     <div class="col-md-4 icecream-list">
         <h3 class="nixie">{{ flavour.name }}</h3>
         <a href="{% url 'flavours:update' slug=flavour.slug %}" class="btn btn-success edit-btn"><span class="glyphicon glyphicon-pencil"></span></a>

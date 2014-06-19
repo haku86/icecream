@@ -26,10 +26,11 @@ class FlavourActionMixin(object):
         messages.info(self.request, msg)
         return super(FlavourActionMixin, self).form_valid(form)
 
-def flavour_list_view(request):
-    flavours = Flavour.objects.all()
-
-    if request.method == "POST":
+class FlavourListView(ListView):
+    model = Flavour
+    form_class = ScoopsUpdateForm
+    
+    def post(self, request):
         flavour_id = int(request.POST.get('flavour_id'))
         flavour = get_object_or_404(Flavour, pk=flavour_id)
         if 'one' in request.POST:
@@ -38,10 +39,8 @@ def flavour_list_view(request):
         elif 'two' in request.POST:
             flavour.scoops_remaining -= 2
             flavour.save()
-        return HttpResponseRedirect('/')  
-    else:
-        scoops_update_form = ScoopsUpdateForm()
-    return render(request, 'index.html',{'flavours' : flavours, 'scoops_update_form' : scoops_update_form})
+        return HttpResponseRedirect('/') 
+
 
 class FlavourCreateView(LoginRequiredMixin, FlavourActionMixin, CreateView):
     model = Flavour
