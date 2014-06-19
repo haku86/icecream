@@ -6,6 +6,7 @@ urlpatterns = patterns('',
     
     # ex: /guides/make-a-seashell-candle
     url(r'^create/$', FlavourCreateView.as_view(template_name="create.html"), name="create"),
+    url(r'^update/(?P<slug>[-\w]+)$', FlavourUpdateView.as_view(template_name="update.html"), name="update"),
     url(r'^(?P<slug>[-\w]+)/$', FlavourDetailView.as_view(template_name="detail.html"), name="detail"),
     #url(r'^(?P<slug>[-\w]+)/$', FlavourDetailView.as_view(template_name='detail.html', name='detail'),
     #url(r'^create/$', 'guides.views.create', name='create'),

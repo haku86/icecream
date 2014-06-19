@@ -8,7 +8,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from braces.views import LoginRequiredMixin
 
 from .models import Flavour
-from .forms import FlavourCreateForm, ScoopsUpdateForm
+from .forms import FlavourCreateForm, FlavourUpdateForm, ScoopsUpdateForm
 
 # Create your views here.
 class FlavourActionMixin(object):
@@ -50,6 +50,7 @@ class FlavourCreateView(LoginRequiredMixin, FlavourActionMixin, CreateView):
 
 class FlavourUpdateView(LoginRequiredMixin, FlavourActionMixin, UpdateView):
     model = Flavour
+    form_class = FlavourUpdateForm
     action = "updated"
 
 class FlavourDetailView(DetailView):

@@ -12,6 +12,7 @@
     {% for flavour in flavours %}
     <div class="col-md-4 icecream-list">
         <h3 class="nixie">{{ flavour.name }}</h3>
+        <a href="{% url 'flavours:update' slug=flavour.slug %}" class="btn btn-success edit-btn"><span class="glyphicon glyphicon-pencil"></span></a>
         <div class="icecream-tub" style="background-color: {{ flavour.color }}"></div>
         
         
@@ -21,8 +22,8 @@
             <span><strong>{{ flavour.scoops_remaining }}</strong></span><span class="nixie"> scoops remaining</span>
             <br/>
             <input type="hidden" name="flavour_id" value="{{ flavour.id }}"/>
-            <input type="submit" name="one" value="Single Scoop"/>
-            <input type="submit" name="two" value="Double Scoop"/>
+            <input type="submit" class="btn btn-warning" name="one" value="Single Scoop"/>
+            <input type="submit" class="btn btn-warning" name="two" value="Double Scoop"/>
         </form>
     </div>
     {% endfor %}
